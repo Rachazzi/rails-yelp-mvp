@@ -57,4 +57,10 @@ group :development do
   # gem "spring"
 end
 
+gem "rspec-rails", group: [:development, :test]
+
 gem 'rails-controller-testing', group: [ :test ]
+
+gem "simple_form"
+
+gem "faker"

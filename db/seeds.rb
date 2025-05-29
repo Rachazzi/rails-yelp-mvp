@@ -7,3 +7,24 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'faker'
+
+# db/seeds.rb
+# 1. Clean the database 🗑️
+puts "Cleaning database..."
+Restaurant.destroy_all
+
+# 2. Create the instances 🏗️
+5.times do
+  restaurant = Restaurant.new(
+    name:    Faker::Company.name,
+    address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
+    phone_number:  Faker::PhoneNumber.phone_number,
+    category: ["chinese", "italian", "japanese", "french", "belgian"].sample
+  )
+  restaurant.save!
+end
+
+# 3. Display a message 🎉
+puts "Finished! Created #{Restaurant.count} restaurants."
